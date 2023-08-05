@@ -1,0 +1,32 @@
+.popup__input-error {
+  position: absolute;
+  left: 22px;
+  top: 145px;
+  display: block;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  margin: 5px 0 0 0;
+}
+
+@media screen and (min-width: 320px) {
+  .popup__input-error {
+    width: 238px;
+  }
+  .popup__input-error:nth-of-type(2) {
+    top: 202px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .popup__input-error {
+    left: 35px;
+    top: 138px;
+    width: 358px;
+  }
+  .popup__input-error:nth-of-type(2) {
+    top: 200px;
+  }
+}

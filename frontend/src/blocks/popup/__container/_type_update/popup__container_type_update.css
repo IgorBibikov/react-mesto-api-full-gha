@@ -1,0 +1,12 @@
+@media screen and (min-width: 320px) {
+  .popup__container_type_update {
+    width: 282px;
+    height: 181px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .popup__container_type_update {
+    width: 430px;
+    height: 272px;
+  }
+}
