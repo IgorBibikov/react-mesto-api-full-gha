@@ -55,8 +55,8 @@ function deleteCard(req, res, next) {
       if (err.name === 'CastError') {
         next(
           new BadRequestErr(
-            'Переданы некорректные данные для удаления карточки.'
-          )
+            'Переданы некорректные данные для удаления карточки.',
+          ),
         );
       } else {
         next(err);
@@ -69,7 +69,7 @@ function setLikeCard(req, res, next) {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: req.user._id } },
-    { new: true }
+    { new: true },
   )
     .then((card) => {
       if (!card) {
@@ -82,8 +82,8 @@ function setLikeCard(req, res, next) {
       if (err.name === 'CastError') {
         next(
           new BadRequestErr(
-            'Переданы некорректные данные для постановки/снятии лайка.'
-          )
+            'Переданы некорректные данные для постановки/снятии лайка.',
+          ),
         );
       } else {
         next(err);
@@ -96,7 +96,7 @@ function deleteLikeCard(req, res, next) {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $pull: { likes: req.user._id } },
-    { new: true }
+    { new: true },
   )
     .then((card) => {
       if (!card) {
@@ -109,8 +109,8 @@ function deleteLikeCard(req, res, next) {
       if (err.name === 'CastError') {
         next(
           new BadRequestErr(
-            'Переданы некорректные данные для постановки/снятии лайка.'
-          )
+            'Переданы некорректные данные для постановки/снятии лайка.',
+          ),
         );
       } else {
         next(err);

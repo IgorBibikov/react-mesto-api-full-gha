@@ -5,9 +5,10 @@ const { PORT = 4000 } = process.env;
 const cookies = require('cookie-parser');
 
 const { errors } = require('celebrate');
-const { routes } = require('./routes/index');
 const cors = require('cors');
-// const cors = require('./middlewares/Cors');
+const { routes } = require('./routes/index');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 const errorHandler = require('./middlewares/error-handler');
 
 // Запуск приложения
@@ -33,9 +34,14 @@ app.use(
       'http://localhost:4000',
     ],
     credentials: true,
-  })
+  }),
 );
+// подключаем логгер запросов ДО ОБРАБОТЧИКОВ РОУТОВ
+app.use(requestLogger);
+
 app.use(routes);
+// подключаем логгер ошибок ПОСЛЕ ОБРАБОТЧИКОВ РОУТОВ ДО ОБРАТОЧИКОВ ОШИБОК
+app.use(errorLogger);
 
 app.use(errors());
 

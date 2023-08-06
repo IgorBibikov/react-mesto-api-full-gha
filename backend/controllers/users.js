@@ -55,7 +55,9 @@ function getCurrentUser(req, res, next) {
 
 // Создание пользователя +++<><><>
 function createUser(req, res, next) {
-  const { name, about, avatar, email, password } = req.body;
+  const {
+    name, about, avatar, email, password,
+  } = req.body;
   bcrypt
     .hash(password, 10)
     .then((hash) => {
@@ -78,7 +80,7 @@ function createUser(req, res, next) {
         .catch((err) => {
           if (err.code === 11000) {
             next(
-              new ConflictErr('Пользователь указанным email уже существует')
+              new ConflictErr('Пользователь указанным email уже существует'),
             );
           }
           if (err.name === 'ValidationError') {
@@ -99,7 +101,7 @@ function updateUserProfile(req, res, next) {
   User.findByIdAndUpdate(
     req.user._id,
     { name, about },
-    { runValidators: true, new: true }
+    { runValidators: true, new: true },
   )
     .then((user) => {
       if (!req.user._id) {
@@ -124,7 +126,7 @@ function updateUserAvatar(req, res, next) {
   return User.findByIdAndUpdate(
     req.user._id,
     { avatar },
-    { runValidators: true, new: true }
+    { runValidators: true, new: true },
   )
     .then((user) => {
       if (!req.user._id) {
