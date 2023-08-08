@@ -31,6 +31,7 @@ app.use(
       "https://praktikum.tk",
       "http://praktikum.tk",
       "http://localhost:3000",
+      "http://localhost:3001",
       "http://localhost:4000",
     ],
     credentials: true,

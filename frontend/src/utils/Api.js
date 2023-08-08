@@ -2,7 +2,6 @@ class Api {
   constructor(baseUrl) {
     this._baseUrl = baseUrl;
     this._headers = {
-      // authorization: 'e725f469-9ad9-4c05-b58f-3c379e0514c5',
       'Content-Type': 'application/json',
     };
   }
@@ -83,6 +82,5 @@ class Api {
     return isLiked ? this.addLike(cardId) : this.removeLike(cardId);
   }
 }
-// export const api = new Api('https://mesto.nomoreparties.co/v1/cohort-65');
 
-export const api = new Api('http://localhost:4000');
+export const api = new Api('http://localhost:3001');
