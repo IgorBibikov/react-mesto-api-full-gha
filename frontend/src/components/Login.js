@@ -22,14 +22,16 @@ function Login(props) {
     auth
       .authorize(formValue.email, formValue.password)
       .then((data) => {
-        console.log(data);
-        props.setUserData({ email: data.data.email });
+        props.setUserData({
+          email: data.data.email,
+          name: data.data.name,
+          avatar: data.data.avatar,
+        });
       })
       .then(() => {
         props.handleLogin(true);
         navigate('/');
       })
-      // ???
       .catch((err) => {
         props.showRegisterFail();
         props.setIsInfoTooltipOpen(true);

@@ -1,21 +1,21 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const { PORT, DB_ADDRESS } = process.env;
+const cookies = require("cookie-parser");
 
-const { PORT = 4000 } = process.env;
-const cookies = require('cookie-parser');
+const { errors } = require("celebrate");
+const cors = require("cors");
+const { routes } = require("./routes/index");
+const { requestLogger, errorLogger } = require("./middlewares/logger");
 
-const { errors } = require('celebrate');
-const cors = require('cors');
-const { routes } = require('./routes/index');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-const errorHandler = require('./middlewares/error-handler');
+const errorHandler = require("./middlewares/error-handler");
 
 // Запуск приложения
 const app = express();
 
 // Подключение к базе данных
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect(DB_ADDRESS, {
   useNewUrlParser: true,
   useUnifiedTopology: false,
 });
@@ -28,13 +28,13 @@ app.use(cookies());
 app.use(
   cors({
     origin: [
-      'https://praktikum.tk',
-      'http://praktikum.tk',
-      'http://localhost:3000',
-      'http://localhost:4000',
+      "https://praktikum.tk",
+      "http://praktikum.tk",
+      "http://localhost:3000",
+      "http://localhost:4000",
     ],
     credentials: true,
-  }),
+  })
 );
 // подключаем логгер запросов ДО ОБРАБОТЧИКОВ РОУТОВ
 app.use(requestLogger);
