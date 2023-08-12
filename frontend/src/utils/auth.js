@@ -1,5 +1,5 @@
 // export const BASE_URL = 'http://localhost:3001';
-export const BASE_URL = 'http://api.igorb.nomoreparties.co';
+export const BASE_URL = 'https://api.igorb.nomoreparties.co';
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
