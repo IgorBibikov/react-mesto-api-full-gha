@@ -33,6 +33,8 @@ app.use(
       "http://localhost:3000",
       "http://localhost:3001",
       "http://localhost:4000",
+      "http://api.igorb.nomoreparties.co",
+      "https://api.igorb.nomoreparties.co",
     ],
     credentials: true,
   })

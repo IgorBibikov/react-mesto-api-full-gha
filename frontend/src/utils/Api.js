@@ -83,4 +83,5 @@ class Api {
   }
 }
 
-export const api = new Api('http://localhost:3001');
+// export const api = new Api('http://localhost:3001');
+export const api = new Api('http://api.igorb.nomoreparties.co');
