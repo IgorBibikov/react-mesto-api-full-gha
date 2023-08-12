@@ -145,25 +145,27 @@ function App() {
   }, []);
 
   useEffect(() => {
-    Promise.all([
-      api
-        .getInitialCards()
-        .then((res) => {
-          setCards(res.reverse());
-        })
-        .catch((err) => {
-          console.error(`WARNING ${err}`);
-        }),
-      api
-        .getProfileData()
-        .then((res) => {
-          setCurrentUser(res);
-        })
-        .catch((err) => {
-          console.error(`WARNING ${err}`);
-        }),
-    ]);
-  }, []);
+    if (isLoggedIn) {
+      Promise.all([
+        api
+          .getInitialCards()
+          .then((res) => {
+            setCards(res);
+          })
+          .catch((err) => {
+            console.error(`WARNING ${err}`);
+          }),
+        api
+          .getProfileData()
+          .then((res) => {
+            setCurrentUser(res);
+          })
+          .catch((err) => {
+            console.error(`WARNING ${err}`);
+          }),
+      ]);
+    }
+  }, [isLoggedIn]);
   function handleAddPlaceSubmit(newCard) {
     api
       .addNewCard(newCard)
