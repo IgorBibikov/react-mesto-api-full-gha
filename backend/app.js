@@ -25,7 +25,7 @@ mongoose.connect(DB_ADDRESS, {
 app.use(express.json());
 
 app.use(cookies());
-
+// Настройки для корс
 app.use(
   cors({
     origin: [
