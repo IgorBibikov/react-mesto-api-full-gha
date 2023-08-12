@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const { PORT } = process.env;
+const { PORT = 3000, DB_ADDRESS } = process.env;
 const cookies = require('cookie-parser');
 
 const { errors } = require('celebrate');
@@ -16,7 +16,7 @@ const errorHandler = require('./middlewares/error-handler');
 const app = express();
 
 // Подключение к базе данных
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
+mongoose.connect(DB_ADDRESS, {
   useNewUrlParser: true,
   useUnifiedTopology: false,
 });
