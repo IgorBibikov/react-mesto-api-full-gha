@@ -20,6 +20,7 @@ mongoose.connect(DB_ADDRESS, {
   useNewUrlParser: true,
   useUnifiedTopology: false,
 });
+console.log(DB_ADDRESS);
 
 // Middleware объединение пакетов bodynm
 app.use(express.json());
