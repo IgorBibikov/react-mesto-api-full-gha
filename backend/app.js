@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const helmet = require('helmet');
+
 const { PORT = 3000, DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 const cookies = require('cookie-parser');
 
@@ -20,7 +22,7 @@ mongoose.connect(DB_ADDRESS, {
   useNewUrlParser: true,
   useUnifiedTopology: false,
 });
-console.log(DB_ADDRESS);
+app.use(helmet());
 // Middleware объединение пакетов bodynm
 app.use(express.json());
 
@@ -40,6 +42,8 @@ app.use(
     credentials: true,
   }),
 );
+
+app.disable('x-powered-by');
 // подключаем логгер запросов ДО ОБРАБОТЧИКОВ РОУТОВ
 app.use(requestLogger);
 
