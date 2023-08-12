@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const { PORT = 3000, DB_ADDRESS } = process.env;
+const { PORT = 3000, DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 const cookies = require('cookie-parser');
 
 const { errors } = require('celebrate');
@@ -20,7 +20,7 @@ mongoose.connect(DB_ADDRESS, {
   useNewUrlParser: true,
   useUnifiedTopology: false,
 });
-
+console.log(DB_ADDRESS);
 // Middleware объединение пакетов bodynm
 app.use(express.json());
 
