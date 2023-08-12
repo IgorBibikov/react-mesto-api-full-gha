@@ -13,6 +13,13 @@ const { login, createUser, logout } = require('../controllers/users');
 const { usersRoutes } = require('./users');
 const { cardsRoutes } = require('./cards');
 
+// Краш тест
+routes.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 routes.post('/signin', ValidationLogin, login);
 routes.post('/signout', logout);
 routes.post('/signup', ValidationСreateUser, createUser);
