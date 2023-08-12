@@ -210,7 +210,7 @@ function App() {
               }
             />
             <Route
-              path="/sign-up"
+              path="/signup"
               element={
                 <Register
                   title="Регистрация"

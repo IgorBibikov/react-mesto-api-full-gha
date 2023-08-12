@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.104.92
+IP 158.160.104.92
 
 Frontend https://igorb.nomoreparties.co
 

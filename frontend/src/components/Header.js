@@ -27,12 +27,12 @@ function Header(props) {
             Войти
           </Link>
         )}
-        {location.pathname !== '/sign-up' && location.pathname !== '/' && (
-          <Link to="/sign-up" className="navbar__link">
+        {location.pathname !== '/signup' && location.pathname !== '/' && (
+          <Link to="/signup" className="navbar__link">
             Регистрация
           </Link>
         )}
-        {location.pathname !== '/sign-up' &&
+        {location.pathname !== '/signup' &&
           location.pathname !== '/sign-in' && (
             <Link onClick={signOut} to="/sign-in" className="navbar__link">
               Выйти
